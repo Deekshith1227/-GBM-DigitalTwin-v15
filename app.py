@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 
+from gene_extractor import extract_genes
 from patient_matrix_extractor import extract_patient_profile
 from pdf_report import create_report
 
@@ -23,7 +24,8 @@ input_method = st.radio(
         "Manual Entry",
         "CSV Upload",
         "Excel Upload",
-        "Patient Matrix Upload"
+        "Patient Matrix Upload",
+        "RNA-seq Matrix Upload"
     ]
 )
 uploaded_file = None
@@ -67,6 +69,10 @@ mgmt = st.selectbox(
 # GENE INPUTS
 # -----------------------------
 
+# -----------------------------
+# GENE INPUTS
+# -----------------------------
+
 default_values = {
     "OSMR": 1.0,
     "TMEM171": 1.0,
@@ -83,6 +89,10 @@ default_values = {
 if uploaded_file is not None:
 
     try:
+
+        # -----------------------------
+        # CSV Upload
+        # -----------------------------
 
         if input_method == "CSV Upload":
 
@@ -102,6 +112,10 @@ if uploaded_file is not None:
                     default_values[gene] = float(
                         gene_dict[gene]
                     )
+
+        # -----------------------------
+        # Excel Upload
+        # -----------------------------
 
         elif input_method == "Excel Upload":
 
@@ -123,6 +137,10 @@ if uploaded_file is not None:
                     default_values[gene] = float(
                         gene_dict[gene]
                     )
+
+        # -----------------------------
+        # Patient Matrix Upload
+        # -----------------------------
 
         elif input_method == "Patient Matrix Upload":
 
@@ -150,6 +168,45 @@ if uploaded_file is not None:
                 default_values[gene] = float(
                     patient_row.iloc[0][gene]
                 )
+
+        # -----------------------------
+        # RNA-seq Matrix Upload
+        # -----------------------------
+
+        elif input_method == "RNA-seq Matrix Upload":
+
+            import tempfile
+
+            with tempfile.NamedTemporaryFile(
+                delete=False,
+                suffix=".txt"
+            ) as tmp:
+
+                tmp.write(
+                    uploaded_file.getvalue()
+                )
+
+                temp_path = tmp.name
+
+            patient_id = st.text_input(
+                "Patient ID",
+                "CGGA_1002"
+            )
+
+            gene_values = extract_genes(
+                temp_path,
+                patient_id
+            )
+
+            st.write(gene_values)
+
+            for gene in default_values:
+
+                if gene in gene_values:
+
+                    default_values[gene] = float(
+                        gene_values[gene]
+                    )
 
         st.success(
             "Gene expression values loaded successfully"
