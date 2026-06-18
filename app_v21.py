@@ -279,6 +279,69 @@ elif input_method == "CSV Upload":
             "View Extracted Patient Profile"
         ):
             st.json(profile) 
+ 
+
+
+elif input_method == "Excel Upload":
+
+    excel_file = st.file_uploader(
+        "Upload Patient Excel",
+        type=["xlsx", "xls"]
+    )
+
+    if excel_file:
+
+        df = pd.read_excel(excel_file)
+
+        st.success(
+            f"{len(df)} patients loaded"
+        )
+
+        patient_ids = df["Patient_ID"].tolist()
+
+        selected_patient = st.selectbox(
+            "Select Patient",
+            patient_ids
+        )
+
+        row = df[
+            df["Patient_ID"] == selected_patient
+        ].iloc[0]
+
+        profile = {
+
+            "Patient_ID": str(row["Patient_ID"]),
+
+            "Patient_Name": str(
+                row.get(
+                    "Patient_Name",
+                    ""
+                )
+            ),
+
+            "Age": int(row["Age"]),
+            "Grade": int(row["Grade"]),
+
+            "IDH": int(row["IDH"]),
+            "MGMT": int(row["MGMT"]),
+
+            "OSMR": float(row["OSMR"]),
+            "TMEM171": float(row["TMEM171"]),
+            "GJB2": float(row["GJB2"]),
+            "VILL": float(row["VILL"]),
+            "SHISA6": float(row["SHISA6"]),
+            "SCN9A": float(row["SCN9A"]),
+            "GPR157": float(row["GPR157"]),
+            "RPL39L": float(row["RPL39L"]),
+            "PKD2L1": float(row["PKD2L1"]),
+            "IGFBP6": float(row["IGFBP6"])
+        }
+
+        with st.expander(
+            "View Extracted Patient Profile"
+        ):
+            st.json(profile)
+
 
 if st.button("Predict Patient Outcome"):
 
