@@ -106,9 +106,63 @@ if input_method == "Clinical + RNA-seq Upload":
         )
         
         with st.expander(
-            "View Extracted Patient Profile (Debug)"
+            "View Extracted Patient Profile "
         ):
             st.json(profile)
+
+
+elif input_method == "CSV Upload":
+
+    csv_file = st.file_uploader(
+        "Upload Patient CSV",
+        type=["csv"]
+    )
+
+    if csv_file:
+
+        df = pd.read_csv(csv_file)
+
+        st.success(
+            f"{len(df)} patients loaded"
+        )
+
+        patient_ids = df["Patient_ID"].tolist()
+
+        selected_patient = st.selectbox(
+            "Select Patient",
+            patient_ids
+        )
+
+        row = df[
+            df["Patient_ID"] == selected_patient
+        ].iloc[0]
+
+        profile = {
+
+            "Patient_ID": row["Patient_ID"],
+
+            "Age": row["Age"],
+            "Grade": row["Grade"],
+
+            "IDH": row["IDH"],
+            "MGMT": row["MGMT"],
+
+            "OSMR": row["OSMR"],
+            "TMEM171": row["TMEM171"],
+            "GJB2": row["GJB2"],
+            "VILL": row["VILL"],
+            "SHISA6": row["SHISA6"],
+            "SCN9A": row["SCN9A"],
+            "GPR157": row["GPR157"],
+            "RPL39L": row["RPL39L"],
+            "PKD2L1": row["PKD2L1"],
+            "IGFBP6": row["IGFBP6"]
+        }
+
+        with st.expander(
+            "View Extracted Patient Profile"
+        ):
+            st.json(profile) 
 
 if st.button("Predict Patient Outcome"):
 
@@ -145,34 +199,60 @@ if st.button("Predict Patient Outcome"):
             patient
         )[0]
 
-        st.success(
-            f"Risk Score: {risk_score:.4f}"
-        )
-        
+       
+
         MEDIAN_RISK = 2.722561579039131
+
+        risk_difference = risk_score - MEDIAN_RISK
 
         st.info(
             f"Training Cohort Median Risk: {MEDIAN_RISK:.4f}"
         )
 
-        
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.metric(
+                "Patient ID",
+                profile["Patient_ID"]
+            )
+
+        with col2:
+            st.metric(
+                "Risk Score",
+                f"{risk_score:.4f}"
+            )
+
+        with col3:
+            st.metric(
+                "Risk Difference",
+                f"{risk_difference:.4f}"
+            )
+
 
         if risk_score > MEDIAN_RISK:
 
             risk_group = "HIGH RISK"
 
-            st.error(
-                f"Risk Group: {risk_group}"
-            )
-
         else:
 
             risk_group = "LOW RISK"
 
-            st.success(
-                f"Risk Group: {risk_group}"
+
+        
+
+        if risk_group == "HIGH RISK":
+
+            st.error(
+                "🔴 HIGH RISK"
             )
 
+        else:
+
+            st.success(
+                "🟢 LOW RISK"
+            )
+ 
         surv = model.predict_survival_function(
             patient
         )
@@ -209,11 +289,11 @@ if st.button("Predict Patient Outcome"):
 
 
 
-              # -----------------------------
+        # -----------------------------
         # PATIENT SUMMARY
         # -----------------------------
 
-        st.subheader("Patient Summary")
+      
 
         summary_df = pd.DataFrame({
             "Feature":
@@ -224,14 +304,16 @@ if st.button("Predict Patient Outcome"):
                 [profile["Patient_ID"]] +
                 list(patient.iloc[0].values)
         })
-            
-        st.dataframe(
-            summary_df,
-            use_container_width=True
-        )
 
-        
+        clinical_df = summary_df.iloc[:5]
+        gene_df = summary_df.iloc[5:]
 
+        st.subheader("Patient Information")
+        st.table(clinical_df)
+
+        st.subheader("Gene Expression Signature")
+        st.table(gene_df)
+      
         # -----------------------------
         # CLINICAL INTERPRETATION
         # -----------------------------
@@ -262,7 +344,7 @@ if st.button("Predict Patient Outcome"):
 
         create_report(
             pdf_file,
-            profile["Patient ID"],
+            profile["Patient_ID"],
             patient["Age"].iloc[0],
             patient["Grade"].iloc[0],
             risk_score,
@@ -292,19 +374,23 @@ if st.button("Predict Patient Outcome"):
             "Model Information"
         )
 
-        st.json({
-            "Model":
-            "GBM Digital Twin v2.1",
+        st.table(
+            pd.DataFrame({
+                "Parameter":[
+                    "Model",
+                    "Training Cohort",
+                    "External Validation",
+                    "Training C-index",
+                    "External C-index"
+                ],
+                "Value":[
+                    "GBM Digital Twin v2.1",
+                    "CGGA-693",
+                    "CGGA-325",
+                    "0.7331",
+                    "0.7471"
+                ]
+            })
+        )
 
-            "Training Cohort":
-            "CGGA-693",
-
-            "External Validation":
-            "CGGA-325",
-
-            "Training C-index":
-            0.7331,
-
-            "External C-index":
-            0.7471
-        })
+   
