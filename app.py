@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import pandas as pd
 
+from patient_matrix_extractor import extract_patient_profile
 from pdf_report import create_report
 
 # -----------------------------
@@ -21,10 +22,10 @@ input_method = st.radio(
     [
         "Manual Entry",
         "CSV Upload",
-        "Excel Upload"
+        "Excel Upload",
+        "Patient Matrix Upload"
     ]
 )
-
 uploaded_file = None
 
 if input_method != "Manual Entry":
@@ -85,9 +86,22 @@ if uploaded_file is not None:
 
         if input_method == "CSV Upload":
 
-            df = pd.read_csv(
-                uploaded_file
+            df = pd.read_csv(uploaded_file)
+
+            gene_dict = dict(
+                zip(
+                    df["Gene"],
+                    df["Expression"]
+                )
             )
+
+            for gene in default_values:
+
+                if gene in gene_dict:
+
+                    default_values[gene] = float(
+                        gene_dict[gene]
+                    )
 
         elif input_method == "Excel Upload":
 
@@ -95,19 +109,46 @@ if uploaded_file is not None:
                 uploaded_file
             )
 
-        gene_dict = dict(
-            zip(
-                df["Gene"],
-                df["Expression"]
+            gene_dict = dict(
+                zip(
+                    df["Gene"],
+                    df["Expression"]
+                )
             )
-        )
 
-        for gene in default_values:
+            for gene in default_values:
 
-            if gene in gene_dict:
+                if gene in gene_dict:
+
+                    default_values[gene] = float(
+                        gene_dict[gene]
+                    )
+
+        elif input_method == "Patient Matrix Upload":
+
+            matrix_df = pd.read_csv(
+                uploaded_file
+            )
+
+            patient_ids = (
+                matrix_df["CGGA_ID"]
+                .tolist()
+            )
+
+            selected_patient = st.selectbox(
+                "Select Patient ID",
+                patient_ids
+            )
+
+            patient_row = matrix_df[
+                matrix_df["CGGA_ID"]
+                == selected_patient
+            ]
+
+            for gene in default_values:
 
                 default_values[gene] = float(
-                    gene_dict[gene]
+                    patient_row.iloc[0][gene]
                 )
 
         st.success(
@@ -119,7 +160,6 @@ if uploaded_file is not None:
         st.error(
             f"Upload Error: {e}"
         )
-
 # -----------------------------
 # GENE EXPRESSION INPUTS
 # -----------------------------
