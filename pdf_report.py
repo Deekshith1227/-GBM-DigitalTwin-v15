@@ -14,6 +14,7 @@ from datetime import datetime
 def create_report(
     filename,
     patient_id,
+    patient_name,
     age,
     grade,
     risk_score,
@@ -75,6 +76,13 @@ def create_report(
         )
     )
 
+    story.append(
+        Paragraph(
+            f"Patient Name: {patient_name}",
+            styles["Normal"]
+        )
+    )
+    
     story.append(
         Paragraph(
             f"Age: {age}",

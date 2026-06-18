@@ -30,7 +30,16 @@ if input_method == "Manual Entry":
 
     profile = {}
 
-    profile["Patient_ID"] = "MANUAL_PATIENT"
+    st.subheader("Patient Information")
+
+    profile["Patient_ID"] = st.text_input(
+        "Patient ID",
+        value="GBM-001"
+    )
+
+    profile["Patient_Name"] = st.text_input(
+        "Patient Name (Optional)"
+    )
 
     st.subheader("Clinical Inputs")
 
@@ -58,16 +67,75 @@ if input_method == "Manual Entry":
 
     st.subheader("Gene Expression Inputs")
 
-    profile["OSMR"] = st.number_input("OSMR", value=1.0)
-    profile["TMEM171"] = st.number_input("TMEM171", value=1.0)
-    profile["GJB2"] = st.number_input("GJB2", value=1.0)
-    profile["VILL"] = st.number_input("VILL", value=1.0)
-    profile["SHISA6"] = st.number_input("SHISA6", value=1.0)
-    profile["SCN9A"] = st.number_input("SCN9A", value=1.0)
-    profile["GPR157"] = st.number_input("GPR157", value=1.0)
-    profile["RPL39L"] = st.number_input("RPL39L", value=1.0)
-    profile["PKD2L1"] = st.number_input("PKD2L1", value=1.0)
-    profile["IGFBP6"] = st.number_input("IGFBP6", value=1.0)
+    profile["OSMR"] = st.number_input(
+        "OSMR",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
+
+    profile["TMEM171"] = st.number_input(
+        "TMEM171",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
+
+    profile["GJB2"] = st.number_input(
+        "GJB2",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
+
+    profile["VILL"] = st.number_input(
+        "VILL",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
+
+    profile["SHISA6"] = st.number_input(
+        "SHISA6",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
+
+    profile["SCN9A"] = st.number_input(
+        "SCN9A",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
+
+    profile["GPR157"] = st.number_input(
+        "GPR157",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
+
+    profile["RPL39L"] = st.number_input(
+        "RPL39L",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
+
+    profile["PKD2L1"] = st.number_input(
+        "PKD2L1",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
+
+    profile["IGFBP6"] = st.number_input(
+        "IGFBP6",
+        min_value=0.0,
+        value=1.0,
+        step=0.01
+    )
 
     with st.expander(
         "View Manual Patient Profile"
@@ -187,24 +255,24 @@ elif input_method == "CSV Upload":
 
         profile = {
 
-            "Patient_ID": row["Patient_ID"],
+            "Patient_ID": str(row["Patient_ID"]),
 
-            "Age": row["Age"],
-            "Grade": row["Grade"],
+            "Age": int(row["Age"]),
+            "Grade": int(row["Grade"]),
 
-            "IDH": row["IDH"],
-            "MGMT": row["MGMT"],
+            "IDH": int(row["IDH"]),
+            "MGMT": int(row["MGMT"]),
 
-            "OSMR": row["OSMR"],
-            "TMEM171": row["TMEM171"],
-            "GJB2": row["GJB2"],
-            "VILL": row["VILL"],
-            "SHISA6": row["SHISA6"],
-            "SCN9A": row["SCN9A"],
-            "GPR157": row["GPR157"],
-            "RPL39L": row["RPL39L"],
-            "PKD2L1": row["PKD2L1"],
-            "IGFBP6": row["IGFBP6"]
+            "OSMR": float(row["OSMR"]),
+            "TMEM171": float(row["TMEM171"]),
+            "GJB2": float(row["GJB2"]),
+            "VILL": float(row["VILL"]),
+            "SHISA6": float(row["SHISA6"]),
+            "SCN9A": float(row["SCN9A"]),
+            "GPR157": float(row["GPR157"]),
+            "RPL39L": float(row["RPL39L"]),
+            "PKD2L1": float(row["PKD2L1"]),
+            "IGFBP6": float(row["IGFBP6"])
         }
 
         with st.expander(
@@ -260,10 +328,17 @@ if st.button("Predict Patient Outcome"):
         col1, col2, col3 = st.columns(3)
 
         with col1:
+
             st.metric(
                 "Patient ID",
                 profile["Patient_ID"]
             )
+
+            if "Patient_Name" in profile:
+               st.caption(
+                   profile["Patient_Name"]
+               )
+
 
         with col2:
             st.metric(
@@ -342,19 +417,29 @@ if st.button("Predict Patient Outcome"):
         # -----------------------------
 
       
-
         summary_df = pd.DataFrame({
             "Feature":
-                ["Patient_ID"] +
+                [
+                    "Patient_ID",
+                    "Patient_Name"
+                ] +
                 list(patient.columns),
 
             "Value":
-                [profile["Patient_ID"]] +
+                [
+                    profile["Patient_ID"],
+                    profile.get(
+                        "Patient_Name",
+                        ""
+                    )
+                ] +
                 list(patient.iloc[0].values)
         })
 
-        clinical_df = summary_df.iloc[:5]
-        gene_df = summary_df.iloc[5:]
+
+
+        clinical_df = summary_df.iloc[:6]
+        gene_df = summary_df.iloc[6:]
 
         st.subheader("Patient Information")
         st.table(clinical_df)
@@ -393,6 +478,10 @@ if st.button("Predict Patient Outcome"):
         create_report(
             pdf_file,
             profile["Patient_ID"],
+            profile.get(
+                "Patient_Name",
+                "Not Provided"
+            ),
             patient["Age"].iloc[0],
             patient["Grade"].iloc[0],
             risk_score,
