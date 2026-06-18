@@ -26,6 +26,54 @@ input_method = st.radio(
 
 profile = None
 
+if input_method == "Manual Entry":
+
+    profile = {}
+
+    profile["Patient_ID"] = "MANUAL_PATIENT"
+
+    st.subheader("Clinical Inputs")
+
+    profile["Age"] = st.number_input(
+        "Age",
+        min_value=1,
+        max_value=100,
+        value=50
+    )
+
+    profile["Grade"] = st.selectbox(
+        "Grade",
+        [2, 3, 4]
+    )
+
+    profile["IDH"] = st.selectbox(
+        "IDH Status",
+        [0, 1]
+    )
+
+    profile["MGMT"] = st.selectbox(
+        "MGMT Status",
+        [0, 1]
+    )
+
+    st.subheader("Gene Expression Inputs")
+
+    profile["OSMR"] = st.number_input("OSMR", value=1.0)
+    profile["TMEM171"] = st.number_input("TMEM171", value=1.0)
+    profile["GJB2"] = st.number_input("GJB2", value=1.0)
+    profile["VILL"] = st.number_input("VILL", value=1.0)
+    profile["SHISA6"] = st.number_input("SHISA6", value=1.0)
+    profile["SCN9A"] = st.number_input("SCN9A", value=1.0)
+    profile["GPR157"] = st.number_input("GPR157", value=1.0)
+    profile["RPL39L"] = st.number_input("RPL39L", value=1.0)
+    profile["PKD2L1"] = st.number_input("PKD2L1", value=1.0)
+    profile["IGFBP6"] = st.number_input("IGFBP6", value=1.0)
+
+    with st.expander(
+        "View Manual Patient Profile"
+    ):
+        st.json(profile)
+
 if input_method == "Clinical + RNA-seq Upload":
 
     clinical_file = st.file_uploader(
