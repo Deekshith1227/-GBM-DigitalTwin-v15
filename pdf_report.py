@@ -3,11 +3,17 @@ from reportlab.platypus import (
     Paragraph,
     Spacer
 )
-from reportlab.lib.styles import getSampleStyleSheet
+
+from reportlab.lib.styles import (
+    getSampleStyleSheet
+)
+
+from datetime import datetime
 
 
 def create_report(
     filename,
+    patient_id,
     age,
     grade,
     risk_score,
@@ -17,25 +23,55 @@ def create_report(
     surv5
 ):
 
-    doc = SimpleDocTemplate(filename)
+    doc = SimpleDocTemplate(
+        filename
+    )
 
     styles = getSampleStyleSheet()
 
     story = []
 
+    # ---------------------------------
+    # TITLE
+    # ---------------------------------
+
     story.append(
         Paragraph(
-            "GBM Digital Twin v1.5 Clinical Report",
+            "GBM Digital Twin v2.1 Clinical Report",
             styles["Title"]
         )
     )
 
-    story.append(Spacer(1, 20))
+    story.append(
+        Spacer(1, 10)
+    )
+
+    story.append(
+        Paragraph(
+            f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            styles["Normal"]
+        )
+    )
+
+    story.append(
+        Spacer(1, 20)
+    )
+
+    # ---------------------------------
+    # PATIENT INFORMATION
+    # ---------------------------------
 
     story.append(
         Paragraph(
             "<b>Patient Information</b>",
             styles["Heading2"]
+        )
+    )
+
+    story.append(
+        Paragraph(
+            f"Patient ID: {patient_id}",
+            styles["Normal"]
         )
     )
 
@@ -53,7 +89,13 @@ def create_report(
         )
     )
 
-    story.append(Spacer(1, 10))
+    story.append(
+        Spacer(1, 10)
+    )
+
+    # ---------------------------------
+    # RISK ASSESSMENT
+    # ---------------------------------
 
     story.append(
         Paragraph(
@@ -76,7 +118,20 @@ def create_report(
         )
     )
 
-    story.append(Spacer(1, 10))
+    story.append(
+        Paragraph(
+            "Reference Median Risk: 2.7226",
+            styles["Normal"]
+        )
+    )
+
+    story.append(
+        Spacer(1, 10)
+    )
+
+    # ---------------------------------
+    # SURVIVAL PREDICTION
+    # ---------------------------------
 
     story.append(
         Paragraph(
@@ -87,26 +142,70 @@ def create_report(
 
     story.append(
         Paragraph(
-            f"1-Year Survival: {surv1:.2f}%",
+            f"1-Year Survival Probability: {surv1:.2f}%",
             styles["Normal"]
         )
     )
 
     story.append(
         Paragraph(
-            f"3-Year Survival: {surv3:.2f}%",
+            f"3-Year Survival Probability: {surv3:.2f}%",
             styles["Normal"]
         )
     )
 
     story.append(
         Paragraph(
-            f"5-Year Survival: {surv5:.2f}%",
+            f"5-Year Survival Probability: {surv5:.2f}%",
             styles["Normal"]
         )
     )
 
-    story.append(Spacer(1, 10))
+    story.append(
+        Spacer(1, 10)
+    )
+
+    # ---------------------------------
+    # INTERPRETATION
+    # ---------------------------------
+
+    story.append(
+        Paragraph(
+            "<b>Interpretation</b>",
+            styles["Heading2"]
+        )
+    )
+
+    if risk_group == "HIGH RISK":
+
+        interpretation = (
+            "The patient is classified as HIGH RISK "
+            "relative to the training cohort and may "
+            "have a less favorable predicted prognosis."
+        )
+
+    else:
+
+        interpretation = (
+            "The patient is classified as LOW RISK "
+            "relative to the training cohort and may "
+            "have a comparatively favorable predicted prognosis."
+        )
+
+    story.append(
+        Paragraph(
+            interpretation,
+            styles["Normal"]
+        )
+    )
+
+    story.append(
+        Spacer(1, 10)
+    )
+
+    # ---------------------------------
+    # MODEL INFORMATION
+    # ---------------------------------
 
     story.append(
         Paragraph(
@@ -117,7 +216,28 @@ def create_report(
 
     story.append(
         Paragraph(
-            "Model: GBM Digital Twin v1.5",
+            "Model: GBM Digital Twin v2.1",
+            styles["Normal"]
+        )
+    )
+
+    story.append(
+        Paragraph(
+            "Training Cohort: CGGA-693",
+            styles["Normal"]
+        )
+    )
+
+    story.append(
+        Paragraph(
+            "External Validation Cohort: CGGA-325",
+            styles["Normal"]
+        )
+    )
+
+    story.append(
+        Paragraph(
+            "Training C-index: 0.7331",
             styles["Normal"]
         )
     )
@@ -129,4 +249,35 @@ def create_report(
         )
     )
 
-    doc.build(story)
+    story.append(
+        Spacer(1, 10)
+    )
+
+    # ---------------------------------
+    # DISCLAIMER
+    # ---------------------------------
+
+    story.append(
+        Paragraph(
+            "<b>Research Disclaimer</b>",
+            styles["Heading2"]
+        )
+    )
+
+    story.append(
+        Paragraph(
+            "This report is generated using the GBM Digital Twin v2.1 "
+            "machine learning framework. Predictions are intended for "
+            "research and educational use only and should not be used "
+            "as the sole basis for clinical decision-making.",
+            styles["Normal"]
+        )
+    )
+
+    # ---------------------------------
+    # BUILD PDF
+    # ---------------------------------
+
+    doc.build(
+        story
+    )
