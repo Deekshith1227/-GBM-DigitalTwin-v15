@@ -6,6 +6,10 @@ import tempfile
 from gene_extractor import extract_genes
 from clinical_loader import *
 from pdf_report import create_report
+from patient_matrix_extractor import (
+    extract_patient_profile,
+    get_patient_ids
+)
 
 
 
@@ -340,6 +344,63 @@ elif input_method == "Excel Upload":
         with st.expander(
             "View Extracted Patient Profile"
         ):
+            st.json(profile)
+
+
+
+
+elif input_method == "Patient Matrix Upload":
+
+    matrix_file = st.file_uploader(
+        "Upload Patient Matrix CSV",
+        type=["csv"]
+    )
+
+    if matrix_file:
+
+        with tempfile.NamedTemporaryFile(
+            delete=False,
+            suffix=".csv"
+        ) as tmp:
+
+            tmp.write(
+                matrix_file.getvalue()
+            )
+
+            matrix_path = tmp.name
+
+        patient_ids = get_patient_ids(
+            matrix_path
+        )
+
+        st.success(
+            f"{len(patient_ids)} patients loaded"
+        )
+
+        selected_patient = st.selectbox(
+            "Select Patient",
+            patient_ids
+        )
+
+        gene_profile = extract_patient_profile(
+            matrix_path,
+            selected_patient
+        )
+
+        
+        profile = {
+            "Patient_ID": selected_patient,
+            "Patient_Name": selected_patient,
+
+            "Age": 50,
+            "Grade": 4,
+            "IDH": 0,
+            "MGMT": 0
+        }
+
+        profile.update(gene_profile)
+
+        with st.expander("View Matrix Patient Profile"):
             st.json(profile)
 
 

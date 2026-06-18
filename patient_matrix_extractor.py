@@ -13,6 +13,18 @@ SIGNATURE_GENES = [
     "IGFBP6"
 ]
 
+
+def get_patient_ids(file_path):
+
+    df = pd.read_csv(file_path)
+
+    return (
+        df["CGGA_ID"]
+        .astype(str)
+        .tolist()
+    )
+
+
 def extract_patient_profile(
     file_path,
     patient_id
