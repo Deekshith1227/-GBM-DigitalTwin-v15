@@ -292,9 +292,11 @@ Total Features:
 
 
 
-Model Type:
+Current Production Model:
+Cox Proportional Hazards Survival Model
 
-Random Survival Forest
+Library:
+scikit-survival
 
 
 
