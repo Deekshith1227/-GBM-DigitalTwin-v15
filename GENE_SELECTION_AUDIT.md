@@ -242,3 +242,149 @@ Metrics:
 
 \- Log-rank test
 
+
+
+
+
+
+
+\# Gene Selection Pipeline
+
+
+
+Initial Transcriptome:
+
+\~20,000 genes
+
+
+
+↓
+
+
+
+Expression Filtering
+
+
+
+↓
+
+
+
+15,030 genes retained
+
+
+
+Evidence:
+
+Recovered\_Filtered\_Genes.csv
+
+
+
+↓
+
+
+
+Univariate Cox Proportional Hazards Regression
+
+
+
+↓
+
+
+
+391 prognostic genes
+
+
+
+Evidence:
+
+GBM\_Univariate\_Cox.csv
+
+
+
+↓
+
+
+
+Top Significant Prognostic Genes
+
+
+
+↓
+
+
+
+28 genes
+
+
+
+Evidence:
+
+GBM\_28\_Significant\_Genes.csv
+
+
+
+↓
+
+
+
+LASSO-Cox Regression
+
+
+
+↓
+
+
+
+10-gene prognostic signature
+
+
+
+Evidence:
+
+GBM\_LASSO\_Coefficients.csv
+
+
+
+Final Genes:
+
+
+
+1\. OSMR
+
+2\. TMEM171
+
+3\. GJB2
+
+4\. VILL
+
+5\. SHISA6
+
+6\. SCN9A
+
+7\. GPR157
+
+8\. RPL39L
+
+9\. PKD2L1
+
+10\. IGFBP6
+
+
+
+↓
+
+
+
+Random Survival Forest
+
+
+
+↓
+
+
+
+GBM Digital Twin Survival Engine
+
+
+
