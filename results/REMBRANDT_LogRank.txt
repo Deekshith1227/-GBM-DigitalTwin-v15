@@ -1,0 +1,4 @@
+REMBRANDT Independent Validation
+--------------------------------
+Test Statistic: 76.25675166341696
+P-value: 2.4907960390631235e-18
