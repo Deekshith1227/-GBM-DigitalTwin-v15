@@ -1,0 +1,227 @@
+patient_id,risk_score,risk_group,recommendations
+TCGA-02-0003,214.96597084112113,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-02-0033,231.07842108711708,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-02-0047,226.44403679684604,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-02-0055,246.6183087236292,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-02-2466,165.36678198292162,0,[]
+TCGA-02-2470,210.64256639431252,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-02-2483,147.6613728617786,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-02-2485,215.19555100730005,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-02-2486,226.00393281494036,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0125,166.86354611841548,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-0129,103.66702474235424,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-06-0130,251.54106844966176,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0132,197.91961941250182,0,[]
+TCGA-06-0139,247.11908561501275,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0140,222.4109347049408,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0141,251.29673081082987,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0145,159.56582541775464,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-0152,161.72663501895434,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-0154,188.7718533030438,0,[]
+TCGA-06-0157,224.96881906332402,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0158,243.15052019057651,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0166,226.38802176588462,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0168,206.27226693150337,0,[]
+TCGA-06-0169,103.18801997120521,0,[]
+TCGA-06-0171,93.88015457951062,0,[]
+TCGA-06-0174,229.89442711266204,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0184,233.8913956735816,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0185,124.41980094228941,0,[]
+TCGA-06-0187,185.71113266106957,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-0190,250.56395562208687,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0210,244.98821901070187,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0211,215.8742288030685,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0214,180.53319342329493,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-06-0219,223.69817258351378,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0238,220.8347299477267,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0645,253.26734366442795,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0646,250.4068521607821,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0648,232.40921527748984,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0686,239.16340281987527,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0743,192.6835557290577,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Axitinib', 'High PDGFRA')]"
+TCGA-06-0744,162.6905582771116,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-0745,219.67588309277573,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0747,206.48214076147457,0,"[('Crizotinib', 'High MET')]"
+TCGA-06-0749,246.74462249779785,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0750,225.15048240027951,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0875,127.2169939176836,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-06-0876,160.94359882832165,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Axitinib', 'High PDGFRA')]"
+TCGA-06-0877,155.0024160902136,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-0878,233.05625610432745,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0879,178.77712583290463,0,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET')]"
+TCGA-06-0881,223.04021369201033,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0882,241.62395678250198,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-0939,78.94993424173852,0,[]
+TCGA-06-1084,207.52700109160702,0,"[('Crizotinib', 'High MET')]"
+TCGA-06-1087,232.35835944794798,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-1800,212.3030082467326,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-1804,211.58679447014975,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-1806,242.21121260954388,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-2557,229.64022496038524,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-2558,256.19830050122727,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-2559,241.5039941738342,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-2561,230.73519258689362,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-2562,239.8978611484233,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-2563,162.42024170573134,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-2564,238.86519714550977,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-2565,188.38672711924315,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-2567,187.47259230577637,0,[]
+TCGA-06-2569,194.49226479323906,0,[]
+TCGA-06-2570,143.0845991206419,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-06-5408,238.9922548997269,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-5410,253.79162121584986,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-5411,260.879137789859,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-5412,251.82226608362402,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-5413,267.8216106515517,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-5414,231.82346451614256,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-5415,182.19124965549588,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-5417,106.02815181624362,0,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET')]"
+TCGA-06-5418,228.91284796557065,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-5856,235.03065750810063,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-5858,171.60444583360382,0,[]
+TCGA-06-5859,198.57223757279027,0,[]
+TCGA-06-6388,216.08149840640098,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-6389,119.43072037530749,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-06-6390,198.5431835865974,0,[]
+TCGA-06-6391,200.55916276395592,0,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET')]"
+TCGA-06-6693,57.60993352333082,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-6694,271.97785687428325,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-6695,180.29663664122268,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-06-6697,193.00695220475325,0,"[('Crizotinib', 'High MET')]"
+TCGA-06-6698,207.96275491760576,0,"[('Crizotinib', 'High MET')]"
+TCGA-06-6699,170.72824950098945,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-06-6700,203.88895915859163,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Crizotinib', 'High MET')]"
+TCGA-06-A5U0,150.20902709439702,0,[]
+TCGA-06-A5U1,241.67202670087045,1,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-A6S0,199.35548272456916,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Crizotinib', 'High MET')]"
+TCGA-06-A6S1,247.2718996998442,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-A7TK,225.37291099535986,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-06-A7TL,148.22505160333301,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-08-0386,206.96663309564522,0,"[('Crizotinib', 'High MET')]"
+TCGA-12-0615,213.3048567687214,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-0616,223.45210281961744,1,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-0618,239.43629666058916,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-0619,213.8070716213533,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-0657,188.98802311765476,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-12-0662,191.09087279391642,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Crizotinib', 'High MET')]"
+TCGA-12-0691,217.16647517177518,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-0692,237.2724036560532,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-0773,101.44234163956094,0,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET')]"
+TCGA-12-0775,267.16085217430475,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-0818,88.58967839007386,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-12-0819,164.81316146467046,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-12-0820,192.36435232925845,0,[]
+TCGA-12-0821,223.42821913629885,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-0826,169.73943433743838,0,"[('Crizotinib', 'High MET')]"
+TCGA-12-0827,133.82437634483668,0,[]
+TCGA-12-0829,236.78370407967563,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-1089,172.31794118465803,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-12-1093,205.64373205300043,0,"[('Crizotinib', 'High MET')]"
+TCGA-12-1598,151.12332575052304,0,[]
+TCGA-12-1599,129.27097483832807,0,[]
+TCGA-12-1600,97.0403874861206,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-12-3644,60.106398239119045,0,[]
+TCGA-12-3646,85.63130470411936,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-12-3648,101.87438077813134,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-12-3650,224.50996710467874,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-3651,117.81593716243331,0,[]
+TCGA-12-3652,181.04397268831102,0,[]
+TCGA-12-3653,211.17681976074337,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-12-5295,156.9705778371869,0,[]
+TCGA-12-5299,161.25501586974246,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Crizotinib', 'High MET')]"
+TCGA-12-5301,107.90923470043026,0,[]
+TCGA-14-0787,179.81477129792293,0,[]
+TCGA-14-0789,228.53405566244905,1,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-0813,249.75323580248437,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-0817,223.50341741057355,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-0871,166.3962350115923,0,[]
+TCGA-14-1034,216.25779787435664,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-1037,212.34649105223178,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-1396,235.8805730743113,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-1451,136.0432372597989,0,[]
+TCGA-14-1453,146.85059951190092,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-14-1455,217.73494955556123,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-1795,235.1136846687367,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-1821,70.19824160414746,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-14-1823,216.17817634350519,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-1825,230.0629318977719,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-14-1827,105.5450338596904,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-14-1829,146.30879125710027,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-14-2554,157.4368835946046,0,[]
+TCGA-14-4157,92.45114659239972,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-15-0742,163.1394048822444,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-16-0846,223.79694576009638,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-16-0849,126.1608738133727,0,[]
+TCGA-16-0850,47.90984259319113,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-16-1460,111.10183884971232,0,[]
+TCGA-19-1385,256.74144527961704,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-19-1386,193.56190959386328,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-19-1387,174.62335862421025,0,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET')]"
+TCGA-19-1389,245.16752137826904,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-19-1390,148.7894240029577,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-19-1791,177.66060627828472,0,[]
+TCGA-19-2620,184.0212107496219,0,[]
+TCGA-19-2624,195.35005770359672,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-19-2625,181.06159402680228,0,[]
+TCGA-19-2629,124.48133603628054,0,[]
+TCGA-19-2631,226.5107850531563,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-19-4065,236.31693696529643,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-19-4068,109.00661673810366,0,[]
+TCGA-19-5947,249.4710465588847,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-19-5955,178.0204390125441,0,"[('Crizotinib', 'High MET')]"
+TCGA-19-5956,147.98471025355778,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-19-5958,205.84848313100727,0,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET')]"
+TCGA-19-5959,128.0043912513269,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-19-5960,195.35775795351023,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-19-A60I,167.99477070423558,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET')]"
+TCGA-26-1442,115.25380315043571,0,[]
+TCGA-26-5133,129.22973718910936,0,[]
+TCGA-26-5134,216.04952083649056,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-26-5135,228.80453188185217,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-26-5139,253.66381484931466,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-27-1830,245.01258051112958,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-27-1831,216.4655995565923,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-27-1832,222.14591078951148,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-27-1834,164.73796054026806,0,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET')]"
+TCGA-27-1835,152.4367526389589,0,[]
+TCGA-27-1837,180.2685458302275,0,[]
+TCGA-27-2519,145.6360639407891,0,[]
+TCGA-27-2521,128.13128213044254,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-27-2523,196.76573565433551,0,"[('Axitinib', 'High PDGFRA')]"
+TCGA-27-2524,205.74043474953848,0,"[('Crizotinib', 'High MET')]"
+TCGA-27-2526,168.99728674766067,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-27-2528,231.18315113920303,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-1753,256.08522340342836,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-2499,186.62243314495095,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-28-2509,221.8670729805197,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-2510,244.97539529281346,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-2513,230.8815966608297,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-2514,229.43535813376508,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-5204,211.43051564040547,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-5208,223.287635166665,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-5209,192.56960466715094,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Axitinib', 'High PDGFRA')]"
+TCGA-28-5213,228.46962776877405,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-5215,234.99320918385888,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-5216,217.3979784145421,1,"[('Axitinib', 'High PDGFRA'), ('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-5218,266.9754155158136,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-28-5220,231.5001797944744,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-32-1970,201.7023310549185,0,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR')]"
+TCGA-32-1980,247.83782206116052,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-32-1982,246.34985881900172,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-32-2615,232.69070316397577,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-32-2616,211.60284470642023,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-32-2632,231.81720713374156,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-32-2634,227.34963215766857,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-32-2638,221.89667285738005,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-32-4213,183.08236841035637,0,[]
+TCGA-32-5222,203.85236539343012,0,[]
+TCGA-41-2571,212.0658290573202,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-41-2572,240.10533758864986,1,"[('Afatinib', 'High EGFR'), ('Gefitinib', 'High EGFR'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-41-3915,264.79141833308586,1,"[('Axitinib', 'High PDGFRA'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-41-4097,268.41962502203677,1,"[('Crizotinib', 'High MET'), ('Temsirolimus', 'High-risk tumor')]"
+TCGA-41-5651,125.36620893833546,0,[]
+TCGA-76-4925,189.16899797238446,0,[]
+TCGA-76-4927,251.76506531129687,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-76-4929,247.20509164597,1,"[('Temsirolimus', 'High-risk tumor')]"
+TCGA-76-4931,199.8235773361485,0,[]
+TCGA-76-4932,188.50859613818434,0,[]

@@ -1,0 +1,33 @@
+
+DIGITAL TWIN v1.5
+
+Production Model
+
+Training Cohort:
+CGGA-693
+
+External Validation Cohort:
+CGGA-325
+
+Features:
+Age
+Grade
+IDH_mutation_status
+MGMTp_methylation_status
+OSMR
+TMEM171
+GJB2
+VILL
+SHISA6
+SCN9A
+GPR157
+RPL39L
+PKD2L1
+IGFBP6
+
+Performance:
+Training C-index = 0.7331
+External C-index = 0.7471
+
+Status:
+Production Model

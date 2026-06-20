@@ -1,0 +1,8 @@
+Metric,Value
+Training Cohort,223
+Genes,10
+RSF Trees,500
+Bootstrap C-index,0.809
+REMBRANDT C-index,0.672
+REMBRANDT LogRank p,2.49e-18
+TCGA Patients,212

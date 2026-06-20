@@ -1,0 +1,3 @@
+REMBRANDT Independent Validation
+--------------------------------
+C-index: 0.6720008287865185
