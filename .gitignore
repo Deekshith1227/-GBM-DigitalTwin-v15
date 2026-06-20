@@ -1,3 +1,5 @@
 *.pdf
 __pycache__/
 *.pyc
+# Large CCLE datasets
+Drug_Response_Module/datasets/CCLE/OmicsExpressionProteinCodingGenesTPMLogp1.csv
