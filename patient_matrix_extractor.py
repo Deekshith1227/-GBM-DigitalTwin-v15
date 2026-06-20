@@ -1,6 +1,8 @@
 import pandas as pd
 
 SIGNATURE_GENES = [
+
+    # Survival Model
     "OSMR",
     "TMEM171",
     "GJB2",
@@ -10,9 +12,15 @@ SIGNATURE_GENES = [
     "GPR157",
     "RPL39L",
     "PKD2L1",
-    "IGFBP6"
-]
+    "IGFBP6",
 
+    # Drug Response Biomarkers
+    "EGFR",
+    "PDGFRA",
+    "MET",
+    "MGMT",
+    "IDH1"
+]
 
 def get_patient_ids(file_path):
 
@@ -46,8 +54,14 @@ def extract_patient_profile(
 
     for gene in SIGNATURE_GENES:
 
-        profile[gene] = float(
-            patient.iloc[0][gene]
-        )
+        if gene in patient.columns:
+
+            profile[gene] = float(
+                patient.iloc[0][gene]
+            )
+
+        else:
+
+            profile[gene] = None
 
     return profile

@@ -2,6 +2,8 @@ import pandas as pd
 
 
 SIGNATURE_GENES = [
+
+    # Survival Signature
     "OSMR",
     "TMEM171",
     "GJB2",
@@ -11,9 +13,15 @@ SIGNATURE_GENES = [
     "GPR157",
     "RPL39L",
     "PKD2L1",
-    "IGFBP6"
-]
+    "IGFBP6",
 
+    # Drug Response Biomarkers
+    "EGFR",
+    "PDGFRA",
+    "MET",
+    "MGMT",
+    "IDH1"
+]
 
 def extract_genes(file_path, patient_id=None):
 

@@ -10,8 +10,7 @@ from patient_matrix_extractor import (
     extract_patient_profile,
     get_patient_ids
 )
-
-
+from drug_recommendation import recommend_drugs
 
 
 st.title("GBM Digital Twin v2.1")
@@ -64,7 +63,7 @@ if input_method == "Manual Entry":
         [0, 1]
     )
 
-    profile["MGMT"] = st.selectbox(
+    profile["MGMT_Status"] = st.selectbox(
         "MGMT Status",
         [0, 1]
     )
@@ -141,6 +140,50 @@ if input_method == "Manual Entry":
         step=0.01
     )
 
+    
+    st.subheader(
+        "Drug Response Biomarkers"
+    )
+
+    profile["EGFR"] = st.number_input(
+        "EGFR",
+        min_value=0.0,
+        value=100.0,
+        step=1.0
+    )
+
+    profile["PDGFRA"] = st.number_input(
+        "PDGFRA",
+        min_value=0.0,
+        value=20.0,
+        step=1.0
+    )
+
+    profile["MET"] = st.number_input(
+        "MET",
+        min_value=0.0,
+        value=5.0,
+        step=0.1
+    )
+
+    profile["MGMT_expr"] = st.number_input(
+        "MGMT Expression",
+        min_value=0.0,
+        value=5.0,
+        step=0.1
+    )
+
+    profile["IDH1_expr"] = st.number_input(
+        "IDH1 Expression",
+        min_value=0.0,
+        value=80.0,
+        step=0.1
+    )
+
+
+
+
+
     with st.expander(
         "View Manual Patient Profile"
     ):
@@ -188,9 +231,9 @@ if input_method == "Clinical + RNA-seq Upload":
             clinical_path
         )
 
-        patient_ids = get_patient_ids(
-            clinical_df
-        )
+        patient_ids = clinical_df[
+            "CGGA_ID"
+        ].astype(str).tolist()
 
         selected_patient = st.selectbox(
             "Select Patient",
@@ -220,6 +263,13 @@ if input_method == "Clinical + RNA-seq Upload":
         profile.update(
             gene_profile
         )
+        
+        st.write("PROFILE KEYS")
+        st.write(profile.keys())
+
+        st.write("FULL PROFILE")
+        st.json(profile)
+
 
         st.success(
             "Patient profile loaded"
@@ -265,7 +315,7 @@ elif input_method == "CSV Upload":
             "Grade": int(row["Grade"]),
 
             "IDH": int(row["IDH"]),
-            "MGMT": int(row["MGMT"]),
+            "MGMT_Status": int(row["MGMT"]),
 
             "OSMR": float(row["OSMR"]),
             "TMEM171": float(row["TMEM171"]),
@@ -276,7 +326,16 @@ elif input_method == "CSV Upload":
             "GPR157": float(row["GPR157"]),
             "RPL39L": float(row["RPL39L"]),
             "PKD2L1": float(row["PKD2L1"]),
-            "IGFBP6": float(row["IGFBP6"])
+            "IGFBP6": float(row["IGFBP6"]),
+            
+
+            "EGFR": float(row["EGFR"]),
+            "PDGFRA": float(row["PDGFRA"]),
+            "MET": float(row["MET"]),
+            "MGMT_expr": float(row["MGMT"]),
+            "IDH1_expr": float(row["IDH1"])
+
+
         }
 
         with st.expander(
@@ -327,7 +386,7 @@ elif input_method == "Excel Upload":
             "Grade": int(row["Grade"]),
 
             "IDH": int(row["IDH"]),
-            "MGMT": int(row["MGMT"]),
+            "MGMT_Status": int(row["MGMT"]),
 
             "OSMR": float(row["OSMR"]),
             "TMEM171": float(row["TMEM171"]),
@@ -338,7 +397,13 @@ elif input_method == "Excel Upload":
             "GPR157": float(row["GPR157"]),
             "RPL39L": float(row["RPL39L"]),
             "PKD2L1": float(row["PKD2L1"]),
-            "IGFBP6": float(row["IGFBP6"])
+            "IGFBP6": float(row["IGFBP6"]),
+
+            "EGFR": float(row["EGFR"]),
+            "PDGFRA": float(row["PDGFRA"]),
+            "MET": float(row["MET"]),
+            "MGMT_expr": float(row["MGMT"]),
+            "IDH1_expr": float(row["IDH1"])
         }
 
         with st.expander(
@@ -395,7 +460,7 @@ elif input_method == "Patient Matrix Upload":
             "Age": 50,
             "Grade": 4,
             "IDH": 0,
-            "MGMT": 0
+            "MGMT_Status": 0
         }
 
         profile.update(gene_profile)
@@ -422,7 +487,10 @@ if st.button("Predict Patient Outcome"):
             "Age": profile["Age"],
             "Grade": profile["Grade"],
             "IDH_mutation_status": profile["IDH"],
-            "MGMTp_methylation_status": profile["MGMT"],
+            "MGMTp_methylation_status": profile.get(
+                "MGMT_Status",
+                0
+            ),
             "OSMR": profile["OSMR"],
             "TMEM171": profile["TMEM171"],
             "GJB2": profile["GJB2"],
@@ -486,6 +554,18 @@ if st.button("Predict Patient Outcome"):
             risk_group = "LOW RISK"
 
 
+
+
+
+        drug_recommendations = recommend_drugs(
+            profile,
+            risk_group
+        )
+
+
+       
+
+
         
 
         if risk_group == "HIGH RISK":
@@ -535,6 +615,27 @@ if st.button("Predict Patient Outcome"):
             )
 
 
+        st.subheader("Drug Recommendations")
+
+        if len(drug_recommendations) == 0:
+
+            st.info(
+                "No biomarker-driven recommendations identified."
+            )
+
+        else:
+
+            drug_df = pd.DataFrame(
+                drug_recommendations,
+                columns=[
+                    "Drug",
+                    "Reason"
+                ]
+            )
+
+            st.table(drug_df)
+
+        
 
         # -----------------------------
         # PATIENT SUMMARY
