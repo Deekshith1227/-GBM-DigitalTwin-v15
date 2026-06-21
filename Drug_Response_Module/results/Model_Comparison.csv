@@ -1,0 +1,4 @@
+Model,Features,R2,MAE,RMSE
+Biomarker_RF,291,0.761053,1.018283,1.355457
+Full_Transcriptome_RF,19491,0.778304,0.967,1.305614
+VarianceFiltered_RF,5406,0.776077,0.97255,1.312154
