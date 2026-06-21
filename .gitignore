@@ -3,3 +3,6 @@ __pycache__/
 *.pyc
 # Large CCLE datasets
 Drug_Response_Module/datasets/CCLE/OmicsExpressionProteinCodingGenesTPMLogp1.csv
+# Large transcriptome datasets
+Drug_Response_Module/datasets/TRAINING/GBM_DrugResponse_Training_FullTranscriptome.csv
+Drug_Response_Module/datasets/TRAINING/GB_CCLE_Expression_Full.csv
