@@ -11,3 +11,7 @@ Drug_Response_Module/models/*.pkl
 Drug_Response_Module/models/
 Drug_Response_Module/models/
 *.pkl
+Drug_Response_Module/datasets/TRAINING/GBM_AUC_Resistance.csv
+Drug_Response_Module/datasets/TRAINING/GBM_AUC_Resistance_Training.csv
+Drug_Response_Module/datasets/TRAINING/GBM_IC50_Resistance.csv
+Drug_Response_Module/datasets/TRAINING/GBM_IC50_Resistance_Training.csv

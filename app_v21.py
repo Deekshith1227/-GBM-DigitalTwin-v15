@@ -3,17 +3,30 @@ import pandas as pd
 import joblib
 import tempfile
 
-from gene_extractor import extract_genes
+from gene_extractor import (
+    extract_genes,
+    extract_full_transcriptome
+)
 from clinical_loader import *
 from pdf_report import create_report
 from patient_matrix_extractor import (
     extract_patient_profile,
     get_patient_ids
 )
-from drug_recommendation import recommend_drugs
+# from drug_recommendation import recommend_drugs
 
+from Drug_Response_Module.treatment_simulator import (
+    load_models,
+    predict_drug_response,
+    predict_drug_resistance,
+    generate_treatment_ranking
+)
 
 st.title("GBM Digital Twin v2.1")
+
+response_model, resistance_model, resistance_features = (
+    load_models()
+)
 
 input_method = st.radio(
     "Choose Input Method",
@@ -252,6 +265,12 @@ if input_method == "Clinical + RNA-seq Upload":
             selected_patient
         )
         
+        full_expr = extract_full_transcriptome(
+            rnaseq_path,
+            selected_patient
+        )
+
+           
         profile = {}
 
         profile["Patient_ID"] = selected_patient
@@ -553,17 +572,47 @@ if st.button("Predict Patient Outcome"):
 
             risk_group = "LOW RISK"
 
+        st.write("PROFILE KEYS")
+        st.write(list(profile.keys()))
 
 
 
+        response_patient = {
+            "EGFR": profile["EGFR"],
+            "PDGFRA": profile["PDGFRA"],
+            "MET": profile["MET"],
+            "MGMT": profile["MGMT"],
+            "IDH1": profile["IDH1"]
+        }
 
-        drug_recommendations = recommend_drugs(
-            profile,
-            risk_group
+        response_df = predict_drug_response(
+            response_patient,
+            response_model
         )
 
 
-       
+        resistance_df = predict_drug_resistance(
+            full_expr,
+            resistance_model,
+            resistance_features
+        )
+
+        combined_df = generate_treatment_ranking(
+            response_df,
+            resistance_df
+        )
+
+        st.write(
+            f"Full transcriptome genes: {len(full_expr)}"
+        )
+
+        st.write(
+            f"Resistance predictions: {resistance_df.shape}"
+        )
+
+        st.write(
+            f"Combined ranking: {combined_df.shape}"
+        )
 
 
         
@@ -615,26 +664,20 @@ if st.button("Predict Patient Outcome"):
             )
 
 
-        st.subheader("Drug Recommendations")
+        st.subheader(
+            "Treatment Simulator Ranking"
+        )
 
-        if len(drug_recommendations) == 0:
-
-            st.info(
-                "No biomarker-driven recommendations identified."
-            )
-
-        else:
-
-            drug_df = pd.DataFrame(
-                drug_recommendations,
-                columns=[
+        st.dataframe(
+            combined_df[
+                [
                     "Drug",
-                    "Reason"
+                    "Predicted_LN_IC50",
+                    "Resistance_Probability",
+                    "Final_Score"
                 ]
-            )
-
-            st.table(drug_df)
-
+            ].head(20)
+        )
         
 
         # -----------------------------

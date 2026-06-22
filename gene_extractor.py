@@ -105,3 +105,19 @@ def extract_genes(file_path, patient_id=None):
         raise ValueError(
             "Unsupported file format"
         )
+
+def extract_full_transcriptome(
+    file_path,
+    patient_id
+):
+
+    import pandas as pd
+
+    df = pd.read_table(file_path)
+
+    expr = pd.Series(
+        df[patient_id].values,
+        index=df["Gene_Name"]
+    )
+
+    return expr
