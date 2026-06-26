@@ -1,19 +1,37 @@
 import joblib
 import pandas as pd
 
+from huggingface_hub import hf_hub_download
+
+REPO_ID = "Deekshith1204/gbm-digital-twin-models"
 
 def load_models():
 
+    response_model_path = hf_hub_download(
+        repo_id=REPO_ID,
+        filename="drug_response_rf.pkl"
+    )
+
+    resistance_model_path = hf_hub_download(
+        repo_id=REPO_ID,
+        filename="drug_resistance_rf.pkl"
+    )
+
+    resistance_features_path = hf_hub_download(
+        repo_id=REPO_ID,
+        filename="drug_resistance_features.pkl"
+    )
+
     response_model = joblib.load(
-        r"Drug_Response_Module\models\drug_response_rf.pkl"
+        response_model_path
     )
 
     resistance_model = joblib.load(
-        r"Drug_Response_Module\models\drug_resistance_rf.pkl"
+        resistance_model_path
     )
 
     resistance_features = joblib.load(
-        r"Drug_Response_Module\models\drug_resistance_features.pkl"
+        resistance_features_path
     )
 
     return (
@@ -21,6 +39,7 @@ def load_models():
         resistance_model,
         resistance_features
     )
+
 
 def predict_drug_response(
     patient_profile,

@@ -8,3 +8,4 @@ openpyxl
 scikit-learn==1.8.0
 scipy
 threadpoolctl
+huggingface_hub

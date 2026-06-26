@@ -225,14 +225,6 @@ from Visualizations.risk_comparison import (
 from Visualizations.survival_donuts import (
     create_survival_donut
 )
-from Pages.Pages_dashboard import show_dashboard
-from Pages.Pages_about_model import show_about_model
-from Pages.Pages_patient_profile import show_patient_profile
-from Pages.Pages_survival_prediction import show_survival_prediction
-from Pages.Pages_drug_recommendation import show_drug_recommendation
-from Pages.Pages_biomarkers import show_biomarkers
-from Pages.Pages_visualizations import show_visualizations
-from Pages.Pages_clinical_report import show_clinical_report
 from gene_extractor import (
     extract_genes,
     extract_full_transcriptome
@@ -278,21 +270,8 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("### 📂 Navigation")
-
-    page = st.radio(
-        "",
-        [
-            "🏠 Dashboard",
-            "👤 Patient Profile",
-            "📊 Survival Prediction",
-            "💊 Drug Recommendation",
-            "🧬 Biomarkers",
-            "📈 Visualizations",
-            "📄 Clinical Report",
-            "ℹ️ About Model"
-        ]
-    )
+    st.markdown("### 🧠 GBM Digital Twin")
+    st.info("Version 2.3 - Clinical Decision Support")
 
     st.divider()
     st.markdown("### 📁 Input Method")
@@ -310,36 +289,6 @@ with st.sidebar:
     )
 
     
-if page == "🏠 Dashboard":
-    show_dashboard()
-    
-
-elif page == "👤 Patient Profile":
-    show_patient_profile()
-    
-
-elif page == "📊 Survival Prediction":
-    show_survival_prediction()
-    
-
-elif page == "💊 Drug Recommendation":
-    show_drug_recommendation()
-    
-
-elif page == "🧬 Biomarkers":
-    show_biomarkers()
-    
-
-elif page == "📈 Visualizations":
-    show_visualizations()
-    
-
-elif page == "📄 Clinical Report":
-    show_clinical_report()
-    
-
-elif page == "ℹ️ About Model":
-    show_about_model()
     
 
 profile = None
