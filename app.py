@@ -780,9 +780,14 @@ if st.button("Predict Patient Outcome"):
 
         with st.spinner("🧠 Building Digital Twin..."):
 
-            model = joblib.load(
-                "DigitalTwin_v15_Model.pkl"
+            from huggingface_hub import hf_hub_download
+
+            MODEL_PATH = hf_hub_download(
+                repo_id="Deekshith1204/gbm-digital-twin-models",
+                filename="DigitalTwin_v15_Model.pkl"
             )
+
+            model = joblib.load(MODEL_PATH)
 
             # keep ALL remaining prediction code here
 
